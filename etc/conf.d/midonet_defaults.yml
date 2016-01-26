@@ -1,0 +1,5 @@
+---
+
+midonet_repo_url_base: "http://builds.midonet.org"
+midonet_repo: "midonet-5"
+midonet_dist: "stable"

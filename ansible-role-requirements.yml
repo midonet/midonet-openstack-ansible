@@ -1,0 +1,16 @@
+---
+
+- name: midonet_repos
+  src: abelboldu.midonet-repos
+
+- name: zookeeper_server
+  src: abelboldu.zookeeper
+
+- name: cassandra_server
+  src: abelboldu.cassandra
+
+- name: midonet_agent
+  src: abelboldu.midonet-agent
+
+- name: midonet_cluster
+  src: abelboldu.midonet-cluster

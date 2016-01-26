@@ -1,0 +1,6 @@
+---
+
+- include: zookeeper-install.yml
+- include: cassandra-install.yml
+- include: midonet-agent.yml
+- include: midonet-cluster-install.yml
