@@ -10,7 +10,7 @@ Midonet for OpenStack-Ansible
 About this repository
 ---------------------
 
-This set of playbooks will deploy Midokura Midonet in LXC containers to get high availability service in OpenStack Neutron.
+This set of playbooks will deploy Midokura Midonet services in LXC containers to get high availability in OpenStack Neutron.
 
 Process
 -------
