@@ -1,0 +1,10 @@
+---
+
+- hosts: neutron_server
+  gather_facts: true
+  user: root
+  tasks:
+   - name: Backup default Neutron installation
+     shell: "cp -r /openstack/venvs/neutron-{{ openstack_release }} /openstack/venvs/neutron-{{ openstack_release }}-backup-{{ ansible_date_time.date }}-{{ansible_date_time.time}}"
+  vars_files:
+   - /opt/openstack-ansible/playbooks/inventory/group_vars/all.yml

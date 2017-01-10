@@ -1,0 +1,57 @@
+---
+
+- name: Install git package
+  apt: name={{item}} state=latest
+  with_items:
+    - git
+
+- name: Install MySQL-python package into Neutron virtual environment
+  shell: |
+    source {{ neutron_venv_bin }}/activate && {{ neutron_venv_bin }}/pip install MySQL-python
+  args:
+    executable: "/bin/bash"
+    chdir: "{{ neutron_venv_bin }}"
+
+- name: Midonet git checkout
+  git:
+    repo: https://github.com/midonet/midonet.git
+    dest: /openstack/midonet
+    version: "{{ midonet_branch }}"
+
+- name: Midonet Networking git checkout
+  git:
+    repo: https://github.com/openstack/networking-midonet.git
+    dest: /openstack/midonet-networking
+    version: "{{ midonet_networking_branch }}"
+
+- name: Neutron VPNaaS git checkout
+  git:
+    repo: https://github.com/openstack/neutron-vpnaas.git
+    dest: /openstack/neutron-vpnaas
+    version: "{{ openstack_branch }}"
+  when:
+    - midonet_vpnaas | bool
+
+- name: Install neutron-vpnaas into Neutron virtual environment
+  shell: |
+    source {{ neutron_venv_bin }}/activate && {{ neutron_venv_bin }}/python setup.py install
+  args:
+    executable: "/bin/bash"
+    chdir: /openstack/neutron-vpnaas
+  when:
+    - midonet_vpnaas | bool
+
+- name: Install python-midonetclient into Neutron virtual environment
+  shell: |
+    source {{ neutron_venv_bin }}/activate && {{ neutron_venv_bin }}/pip install -e . #egg=midonetclient
+  args:
+    executable: "/bin/bash"
+    chdir: /openstack/midonet/python-midonetclient
+
+- name: Install networking-midonet into Neutron virtual environment
+  shell: |
+    source {{ neutron_venv_bin }}/activate && {{ neutron_venv_bin }}/python setup.py install
+  args:
+    executable: "/bin/bash"
+    chdir: /openstack/midonet-networking
+  notify: Restart Neutron server

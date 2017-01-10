@@ -1,0 +1,11 @@
+---
+
+- name: Install Midonet Neutron modules and configs
+  hosts: neutron_server
+  gather_facts: true
+  user: root
+  roles:
+    - role: midonet-neutron-server 
+      neutron_venv_bin: /openstack/venvs/neutron-{{ openstack_release }}/bin
+  vars_files:
+    - /opt/openstack-ansible/playbooks/inventory/group_vars/all.yml
