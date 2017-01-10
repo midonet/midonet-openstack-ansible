@@ -27,40 +27,18 @@ Copy the env.d and conf.d files into place
 .. code-block:: bash
 
     cd openstack-ansible-scaleio-midonet
+    cp etc/env.d/cassandra.yml /etc/openstack_deploy/env.d/
+    cp etc/env.d/zookeeper.yml /etc/openstack_deploy/env.d/
+    cp etc/env.d/midonet-api.yml /etc/openstack_deploy/env.d/
 
+    cp etc/conf.d/cassandra.yml /etc/openstack_deploy/conf.d/
+    cp etc/conf.d/zookeeper.yml /etc/openstack_deploy/conf.d/
+    cp etc/conf.d/midonet-api.yml /etc/openstack_deploy/conf.d/
 
-
-
-    --------to be continued
-    cp etc/env.d/scaleio-gateway.yml /etc/openstack_deploy/env.d/
-    cp etc/conf.d/scaleio-gateway.yml /etc/openstack_deploy/conf.d/
-
-Edit ``/etc/openstack_deploy/conf.d/scaleio-gateway.yml`` config depending on environment.
-
-Put ScaleIO Gateway deb package in ``/opt/files`` or other location defined in ``scaleio_install_file_location`` variable in ``defaults/main.yml``.
+Edit ``/etc/openstack_deploy/conf.d/cassandra*zookeeper*midonet-api.yml`` config depending on environment.
 
 Add the export to update the inventory file location
 
 .. code-block:: bash
 
     export ANSIBLE_INVENTORY=/opt/openstack-ansible/playbooks/inventory/dynamic_inventory.py
-
-If you are running the HA Proxy you should run the following playbook as well to enable the ScaleIO Gateway port 9943
-
-.. code-block:: bash
-
-    openstack-ansible playbook-scaleio-haproxy.yml
-
-Create the containers
-
-.. code-block:: bash
-
-    openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=scaleio_gateway
-
-Install ScaleIO Gateway
-
-You can change default gateway admin password set in ``defaults/main.yml`` by passing variable to playbook ``-e scaleio_gateway_admin_password=SecurePassword`` or putting it to the same config with rest of openstack-ansible passwords in ``/etc/openstack_deploy/user_secrets.yml``
-
-.. code-block:: bash
-
-    openstack-ansible playbook-scaleio-install.yml
