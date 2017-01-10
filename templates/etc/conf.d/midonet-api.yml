@@ -1,0 +1,7 @@
+midonet-api_hosts:
+  osa-infra1:
+    ip: 192.168.1.11
+  osa-infra2:
+    ip: 192.168.1.12
+  osa-infra3:
+    ip: 192.168.1.13

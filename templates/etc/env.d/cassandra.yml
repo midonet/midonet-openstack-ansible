@@ -1,0 +1,24 @@
+---
+
+component_skel:
+  cassandra:
+    belongs_to:
+      - cassandra_all
+
+container_skel:
+  cassandra_container:
+    belongs_to:
+      - cassandra_containers
+    contains:
+      - cassandra
+    properties:
+      service_name: cassandra
+      container_release: trusty
+
+physical_skel:
+  cassandra_containers:
+    belongs_to:
+    - all_containers
+  cassandra_hosts:
+    belongs_to:
+    - hosts
