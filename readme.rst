@@ -26,7 +26,7 @@ Copy the env.d and conf.d files into place
 
 .. code-block:: bash
 
-    cd openstack-ansible-scaleio-midonet
+    cd openstack-ansible-midonet
     cp etc/env.d/cassandra.yml /etc/openstack_deploy/env.d/
     cp etc/env.d/zookeeper.yml /etc/openstack_deploy/env.d/
     cp etc/env.d/midonet-api.yml /etc/openstack_deploy/env.d/
@@ -35,7 +35,7 @@ Copy the env.d and conf.d files into place
     cp etc/conf.d/zookeeper.yml /etc/openstack_deploy/conf.d/
     cp etc/conf.d/midonet-api.yml /etc/openstack_deploy/conf.d/
 
-Edit ``/etc/openstack_deploy/conf.d/cassandra*zookeeper*midonet-api.yml`` config depending on environment.
+Edit ``/etc/openstack_deploy/conf.d/{{cassandra}}{{zookeeper}}{{midonet-api}}.yml`` config depending on environment.
 
 Add the export to update the inventory file location
 
