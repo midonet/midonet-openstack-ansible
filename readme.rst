@@ -10,7 +10,7 @@ Midonet for OpenStack-Ansible
 About this repository
 ---------------------
 
-This set of playbooks will deploy Midokura Midonet services in LXC containers to get high availability in OpenStack Neutron.
+This set of playbooks will deploy Midonet services in LXC containers to get high availability in OpenStack Neutron.
 
 Process
 -------
@@ -49,5 +49,20 @@ Add the export to update the inventory file location
 .. code-block:: bash
 
     export ANSIBLE_INVENTORY=/opt/openstack-ansible/playbooks/inventory/dynamic_inventory.py
+
+If you are running the HA Proxy you should run the following playbook as well to enable the Midonet Cluster API port 9981
+
+.. code-block:: bash
+
+    openstack-ansible playbook-midonet-haproxy.yml
+
+Create the containers
+
+.. code-block:: bash
+
+    openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=cassandra
+    openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=zookeeper
+    openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=midonet-api
+    
 
 WORK IN PROGRESS

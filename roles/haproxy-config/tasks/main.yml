@@ -1,0 +1,16 @@
+---
+
+- name: Deploy HAProxy configuration files
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/haproxy/conf.d/{{ item }}"
+    owner: "root"
+    group: "root"
+  with_items:
+    - midonet_cluster_api
+
+- name: Regenerate HAProxy configuration
+  assemble:
+    src: "/etc/haproxy/conf.d"
+    dest: "/etc/haproxy/haproxy.cfg"
+  notify: Restart HAProxy

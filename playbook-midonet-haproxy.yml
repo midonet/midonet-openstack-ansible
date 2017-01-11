@@ -1,0 +1,8 @@
+---
+
+- name: Add HAProxy config for Midonet Cluster API
+  hosts: haproxy_hosts
+  gather_facts: true
+  user: root
+  roles:
+    - role: "haproxy-config"
