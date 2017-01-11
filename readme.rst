@@ -32,6 +32,14 @@ Copy the env.d and conf.d files into place
 
 Edit ``/etc/openstack_deploy/conf.d/{{cassandra}}{{zookeeper}}{{midonet-api}}.yml`` config depending on environment.
 
+Copy Midonet variables config into place and edit depending on environment
+
+.. code-block:: bash
+
+    cp etc/user_midonet_variables.yml /etc/openstack_deploy/
+
+Unset any neutron_* variable from any other config except user_midonet_variables.yml
+
 Copy the Midonet Neutron plugin template into place
 
 .. code-block:: bash
