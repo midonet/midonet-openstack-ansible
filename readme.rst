@@ -34,12 +34,12 @@ Edit ``/etc/openstack_deploy/conf.d/{{cassandra}}{{zookeeper}}{{midonet-api}}.ym
 
 Copy the Midonet Neutron plugin template into place
 
-.. code-block: bash
+.. code-block:: bash
     cp -r templates/plugins/midonet /etc/ansible/roles/os_neutron/templates/plugins/
 
 Overwrite neutron.conf with modified version. See diff for changes.
 
-.. code-block: bash
+.. code-block:: bash
     cp templates/neutron.conf.j2 /etc/ansible/roles/os_neutron/templates/
 
 Add the export to update the inventory file location
