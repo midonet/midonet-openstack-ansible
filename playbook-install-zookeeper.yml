@@ -1,0 +1,10 @@
+---
+
+- name: Install Zookeeper cluster
+  gather_facts: true
+  user: root
+  hosts: zookeeper
+  roles:
+    - role: ansible-role-java 
+    - role: ansible-zookeeper
+      zookeeper_hosts: '{{ groups["zookeeper"] }}'
