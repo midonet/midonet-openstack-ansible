@@ -8,3 +8,5 @@
     - role: ansible-role-java 
     - role: ansible-zookeeper
       zookeeper_hosts: '{{ groups["zookeeper"] }}'
+  vars_files:
+    - /opt/openstack-ansible-midonet/vars/all.yml
