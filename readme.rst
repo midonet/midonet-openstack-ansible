@@ -38,7 +38,7 @@ Copy the Midonet Neutron plugin template into place
 
     cp -r templates/plugins/midonet /etc/ansible/roles/os_neutron/templates/plugins/
 
-Overwrite neutron.conf with modified version. See diff for changes.
+Overwrite neutron.conf template with modified version. See diff for changes
 
 .. code-block:: bash
 
