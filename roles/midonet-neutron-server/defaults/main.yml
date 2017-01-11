@@ -1,7 +1,0 @@
----
-
-openstack_branch: 'stable/newton'
-
-midonet_networking_branch: 'stable/newton'
-
-midonet_branch: 'stable/v5.2.1'

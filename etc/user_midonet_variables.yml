@@ -1,0 +1,38 @@
+---
+
+openstack_branch: 'stable/newton'
+midonet_networking_branch: 'stable/newton'
+midonet_branch: 'stable/v5.2.1'
+
+# Enable/Disable Midonet VPNaaS by commenting out "- vpnaas" and setting horizon_enable_neutron_vpnaas True/False #
+neutron_plugin_base:
+  - midonet.neutron.services.l3.l3_midonet.MidonetL3ServicePlugin
+  - vpnaas
+
+horizon_enable_neutron_vpnaas: True
+
+neutron_midonet_conf_ini_overrides: {}
+
+############DO NOT EDIT BELOW THIS LINE############
+
+neutron_plugin_type: midonet
+
+neutron_plugins:
+  midonet:
+    plugin_conf_ini_overrides: "{{ neutron_midonet_conf_ini_overrides }}"
+    plugin_core: midonet.neutron.plugin_v2.MidonetPluginV2
+    plugin_ini: plugins/midonet/midonet.ini
+
+neutron_metering: False
+neutron_l3: False
+neutron_lbaas: False
+neutron_lbaasv2: False
+neutron_vpnaas: False
+neutron_bgp: False
+neutron_dhcp: False
+neutron_metadata: False
+
+neutron_plugin_loaded_base: "{% for plugin in neutron_plugin_base %}{{ plugin }}{% if not loop.last %},{% endif %}{% endfor %}"
+
+midonet_vpnaas: "{% if ('vpnaas' in neutron_plugin_base) and (neutron_plugin_type == 'midonet') %}True{% else %}False{% endif %}"
+midonet_vpnaas_service_provider: VPN:Midonet:midonet.neutron.services.vpn.service_drivers.midonet_ipsec.MidonetIPsecVPNDriver:default
