@@ -30,7 +30,7 @@ Copy the env.d and conf.d files into place
     cp etc/env.d/* /etc/openstack_deploy/env.d/
     cp etc/conf.d/* /etc/openstack_deploy/conf.d/
 
-Edit ``/etc/openstack_deploy/conf.d/{{cassandra}}{{zookeeper}}{{midonet-api}}.yml`` config depending on environment.
+Edit ``/etc/openstack_deploy/conf.d/{{cassandra}}{{zookeeper}}{{midonet-cluster}}.yml`` config depending on environment.
 
 Copy Midonet variables config into place and edit depending on environment
 
@@ -70,7 +70,7 @@ Create the containers
 
     openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=cassandra
     openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=zookeeper
-    openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=midonet-api
+    openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=midonet-cluster
     
 
 WORK IN PROGRESS

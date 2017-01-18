@@ -1,3 +1,0 @@
----
-
-ansible_default_ipv4.address: "{{ ansible_eth1.ipv4.address }}"

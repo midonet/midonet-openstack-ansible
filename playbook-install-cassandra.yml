@@ -1,0 +1,9 @@
+---
+
+- name: Install Cassandra cluster
+  gather_facts: true
+  user: root
+  hosts: cassandra
+  roles:
+    - role: ansible-cassandra
+      zookeeper_hosts: '{{ groups["cassandra"] }}'
