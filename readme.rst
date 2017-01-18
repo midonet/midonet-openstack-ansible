@@ -1,6 +1,6 @@
 Midonet for OpenStack-Ansible
 #########################################
-:date: 2017-01-11
+:date: 2017-01-18
 :tags: openstack, ansible
 :category: \*openstack, \*nix
 :OS: Ubuntu 16.04
@@ -62,7 +62,7 @@ If you are running the HA Proxy you should run the following playbook as well to
 
 .. code-block:: bash
 
-    openstack-ansible playbook-midonet-haproxy.yml
+    openstack-ansible setup-haproxy.yml
 
 Create the containers
 

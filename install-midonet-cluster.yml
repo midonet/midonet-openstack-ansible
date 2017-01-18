@@ -1,0 +1,9 @@
+---
+
+- name: Install Midonet cluster
+  gather_facts: true
+  user: root
+  hosts: midonet-cluster
+  roles:
+    - role: ansible-role-java
+    - role: ansible-midonet-repo

@@ -1,8 +1,27 @@
 ---
 
 openstack_branch: 'stable/newton'
+
+# Git branches for python egg building for midonet-networking and python-midonetclient
 midonet_networking_branch: 'stable/newton'
 midonet_branch: 'stable/v5.2.1'
+
+# For ansible-cassandra role
+cassandra_max_heap_size: 1024M
+cassandra_heap_newsize: 100M
+
+# For ansible-midonet-cluster role
+midonet_cluster_max_heap_size: 1024M
+midonet_cluster_heap_newsize: 100M
+
+# For ansible-midonet-repo role
+midonet_repo_midonet_version: '5.2'
+midonet_repo_midonet_release: 'stable'
+midonet_repo_openstack_plugin_version: 'newton'
+midonet_repo_openstack_plugin_release: 'stable'
+midonet_repo_mem_enabled: False
+midonet_repo_mem_username: 'midonet'
+midonet_repo_mem_password: '*******'
 
 # Enable/Disable Midonet VPNaaS by commenting out "- vpnaas" and setting horizon_enable_neutron_vpnaas True/False #
 neutron_plugin_base:
@@ -13,9 +32,17 @@ horizon_enable_neutron_vpnaas: True
 
 neutron_midonet_conf_ini_overrides: {}
 #
-cassandra_max_heap_size: 1536M
+cassandra_max_heap_size: 1024M
 cassandra_heap_newsize: 100M
-
+midonet_cluster_max_heap_size: 1024M
+midonet_cluster_heap_newsize: 100M
+midonet_repo_midonet_version: '5.2'
+midonet_repo_midonet_release: 'stable'
+midonet_repo_openstack_plugin_version: 'newton'
+midonet_repo_openstack_plugin_release: 'stable'
+midonet_repo_mem_enabled: False
+midonet_repo_mem_username: 'midonet'
+midonet_repo_mem_password: '*******'
 ############DO NOT EDIT BELOW THIS LINE############
 
 neutron_plugin_type: ml2.lxb
