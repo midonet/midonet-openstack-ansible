@@ -5,5 +5,6 @@
   user: root
   hosts: cassandra
   roles:
+    - role: ansible-role-java
     - role: ansible-cassandra
-      zookeeper_hosts: '{{ groups["cassandra"] }}'
+      cassandra_hosts: '{{ groups["cassandra"] }}'

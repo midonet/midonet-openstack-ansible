@@ -1,24 +1,24 @@
 ---
 
 component_skel:
-  midonet-api:
+  midonet-cluster:
     belongs_to:
       - midonet_all
 
 container_skel:
-  midonet-api_container:
+  midonet-cluster_container:
     belongs_to:
-      - midonet-api_containers
+      - midonet-cluster_containers
     contains:
-      - midonet-api
+      - midonet-cluster
     properties:
-      service_name: midonet-api
+      service_name: midonet-cluster
       container_release: xenial
 
 physical_skel:
-  midonet-api_containers:
+  midonet-cluster_containers:
     belongs_to:
     - all_containers
-  midonet-api_hosts:
+  midonet-cluster_hosts:
     belongs_to:
     - hosts

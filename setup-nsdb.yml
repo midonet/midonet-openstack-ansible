@@ -1,0 +1,4 @@
+---
+
+- include: install-zookeeper.yml
+- include: install-cassandra.yml

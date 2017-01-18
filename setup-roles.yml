@@ -17,7 +17,7 @@
 
     - name: Midonet Cassandra git checkout
       git:
-        repo: https://github.com/midonet/ansible-cassandra.git
+        repo: https://github.com/fitbeard/ansible-cassandra.git
         dest: roles/ansible-cassandra
         version: "master"
 
