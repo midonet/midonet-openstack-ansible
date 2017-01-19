@@ -14,6 +14,27 @@ cassandra_heap_newsize: 100M
 midonet_cluster_max_heap_size: 1024M
 midonet_cluster_heap_newsize: 100M
 
+# For ansible-midonet-agent role
+midonet_agent_cluster_hostname: 'localhost'
+midonet_agent_tunnel_ip: '{{ ansible_default_ipv4.address }}'
+midonet_agent_tzone_type: 'vxlan'
+midonet_agent_cluster_username: 'midonet'
+midonet_agent_cluster_project: 'service'
+midonet_agent_cluster_password: 'midonet_default_pass'
+midonet_agent_cluster_port: 8181
+midonet_agent_agent_template: 'agent-compute-medium'
+midonet_agent_max_heap_size: 512M
+midonet_agent_mem_enabled: False
+midonet_agent_flow_history_enabled: True
+midonet_agent_flow_history_encoding: 'binary'
+midonet_agent_flow_history_udp_endpoint: 'localhost:5001'
+midonet_agent_jmxscraper_enabled: True
+midonet_agent_jmxscraper_target_udp_endpoint: 'localhost:5000'
+
+# For ansible-midonet-cluster and ansible-midonet-agent roles
+zk_iface: eth1
+cs_iface: eth1
+
 # For ansible-midonet-repo role
 midonet_repo_midonet_version: '5.2'
 midonet_repo_midonet_release: 'stable'
@@ -31,18 +52,7 @@ neutron_plugin_base:
 horizon_enable_neutron_vpnaas: True
 
 neutron_midonet_conf_ini_overrides: {}
-#
-cassandra_max_heap_size: 1024M
-cassandra_heap_newsize: 100M
-midonet_cluster_max_heap_size: 1024M
-midonet_cluster_heap_newsize: 100M
-midonet_repo_midonet_version: '5.2'
-midonet_repo_midonet_release: 'stable'
-midonet_repo_openstack_plugin_version: 'newton'
-midonet_repo_openstack_plugin_release: 'stable'
-midonet_repo_mem_enabled: False
-midonet_repo_mem_username: 'midonet'
-midonet_repo_mem_password: '*******'
+
 ############DO NOT EDIT BELOW THIS LINE############
 
 neutron_plugin_type: ml2.lxb

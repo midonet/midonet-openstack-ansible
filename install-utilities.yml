@@ -1,0 +1,13 @@
+---
+
+- name: Install and setup Midonet CLI tools in OSA utility containers
+  gather_facts: true
+  user: root
+  hosts: utility
+  roles:
+    - role: ansible-midonet-repo
+  tasks:
+    - name: Install python-midonetclient package
+      apt: name={{item}} state=latest
+      with_items:
+        - python-midonetclient
