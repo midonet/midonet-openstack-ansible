@@ -10,7 +10,7 @@ backend midonet_cluster-back
     mode http
     balance leastconn
     option forwardfor
-    option httpchk /
+    option httpchk /midonet-api
     option httplog
 {% for host_name in groups['midonet-cluster'] %}
     server {{ host_name }} {{ hostvars[host_name]['ansible_ssh_host'] }}:8181 check inter 5000 inter 12000 rise 3 fall 3
