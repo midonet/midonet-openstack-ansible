@@ -8,24 +8,44 @@ midonet_networking_branch: 'stable/newton'
 midonet_branch: 'stable/v5.2.1'
 
 # For ansible-cassandra role
-cassandra_max_heap_size: 1024M
-cassandra_heap_newsize: 100M
+cassandra_max_heap_size: '1024M'
+cassandra_heap_newsize: '100M'
 
 # For ansible-midonet-cluster role
-midonet_cluster_max_heap_size: 1024M
-midonet_cluster_heap_newsize: 100M
+midonet_cluster_mem_enabled: False
+midonet_cluster_enable_metadata: True
+midonet_cluster_metadata_host: '{{ internal_lb_vip_address }}'
+midonet_cluster_metadata_secret: '{{ nova_metadata_proxy_secret }}'
+midonet_cluster_cassandra_cluster: 'midonet'
+midonet_cluster_keystone_admin_role: 'admin'
+midonet_cluster_keystone_project: 'service'
+midonet_cluster_keystone_port: 35357
+midonet_cluster_keystone_username: 'midonet'
+midonet_cluster_keystone_password: '{{ midonet_service_password }}'
+midonet_cluster_keystone_domain_name: 'Default'
+midonet_cluster_keystone_host: '{{ internal_lb_vip_address }}'
+midonet_cluster_keystone_provider_class: 'org.midonet.cluster.auth.keystone.KeystoneService'
+midonet_cluster_keystone_version: 3
+midonet_cluster_loglevel: 'debug'
+midonet_cluster_cluster_mem: False
+midonet_cluster_flow_tracing_enabled: True
+midonet_cluster_flow_tracing_service_ws_port: '8460'
+midonet_cluster_flow_tracing_auth_ssl_enabled: True
+midonet_cluster_max_heap_size: '1024M'
+midonet_cluster_heap_newsize: '100M'
 
 # For ansible-midonet-agent role
 midonet_agent_cluster_hostname: '{{ internal_lb_vip_address }}'
-midonet_agent_tunnel_ip: '{{ ansible_default_ipv4.address }}'
+midonet_agent_tunnel_ip: '{{ ansible_br_vxlan.ipv4.address }}'
 midonet_agent_tzone_type: 'vxlan'
+midonet_agent_tzone_name: 'tz'
 midonet_agent_cluster_username: 'midonet'
 midonet_agent_cluster_project: 'service'
 midonet_agent_cluster_password: '{{ midonet_service_password }}'
 # Don't use default 8181 Midonet port. In OSA it's allocated for repo containers
 midonet_agent_cluster_port: 9981
-midonet_agent_agent_template: 'agent-compute-medium'
-midonet_agent_max_heap_size: 512M
+midonet_agent_agent_template: 'default'
+midonet_agent_max_heap_size: '512M'
 midonet_agent_mem_enabled: False
 midonet_agent_flow_history_enabled: True
 midonet_agent_flow_history_encoding: 'binary'
@@ -34,8 +54,8 @@ midonet_agent_jmxscraper_enabled: True
 midonet_agent_jmxscraper_target_udp_endpoint: 'localhost:5000'
 
 # For ansible-midonet-cluster and ansible-midonet-agent roles
-zk_iface: eth1
-cs_iface: eth1
+zk_iface: 'ansible_eth1'
+cs_iface: 'ansible_eth1'
 
 # For ansible-midonet-repo role
 midonet_repo_midonet_version: '5.2'

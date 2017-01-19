@@ -1,0 +1,11 @@
+---
+
+- name: Install Midonet agent on Nova nodes
+  gather_facts: true
+  user: root
+  hosts: compute_hosts 
+  roles:
+    - role: ansible-role-java
+    - role: ansible-midonet-repo
+    - role: ansible-midonet-agent
+      zookeeper_hosts: '{{ groups["zookeeper"] }}'
