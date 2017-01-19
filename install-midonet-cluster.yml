@@ -7,3 +7,6 @@
   roles:
     - role: ansible-role-java
     - role: ansible-midonet-repo
+    - role: ansible-midonet-cluster
+      zookeeper_hosts: '{{ groups["zookeeper"] }}'
+      cassandra_hosts: '{{ groups["cassandra"] }}'

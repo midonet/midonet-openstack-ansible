@@ -1,6 +1,7 @@
 ---
 
 openstack_branch: 'stable/newton'
+midonet_service_password: labas
 
 # Git branches for python egg building for midonet-networking and python-midonetclient
 midonet_networking_branch: 'stable/newton'
@@ -15,13 +16,14 @@ midonet_cluster_max_heap_size: 1024M
 midonet_cluster_heap_newsize: 100M
 
 # For ansible-midonet-agent role
-midonet_agent_cluster_hostname: 'localhost'
+midonet_agent_cluster_hostname: '{{ internal_lb_vip_address }}'
 midonet_agent_tunnel_ip: '{{ ansible_default_ipv4.address }}'
 midonet_agent_tzone_type: 'vxlan'
 midonet_agent_cluster_username: 'midonet'
 midonet_agent_cluster_project: 'service'
-midonet_agent_cluster_password: 'midonet_default_pass'
-midonet_agent_cluster_port: 8181
+midonet_agent_cluster_password: '{{ midonet_service_password }}'
+# Don't use default 8181 Midonet port. In OSA it's allocated for repo containers
+midonet_agent_cluster_port: 9981
 midonet_agent_agent_template: 'agent-compute-medium'
 midonet_agent_max_heap_size: 512M
 midonet_agent_mem_enabled: False
