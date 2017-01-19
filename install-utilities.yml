@@ -11,3 +11,10 @@
       apt: name={{item}} state=latest
       with_items:
         - python-midonetclient
+
+    - name: Create midonetrc
+      template:
+        src: '/opt/openstack-ansible-midonet/roles/ansible-midonet-agent/templates/midonetrc.j2'
+        dest: '/root/.midonetrc'
+        owner: 'root'
+        group: 'root'

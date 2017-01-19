@@ -1,0 +1,17 @@
+frontend midonet_cluster-front-1
+    bind {{ internal_lb_vip_address }}:{{ midonet_agent_cluster_port }}
+    option httplog
+    option forwardfor except 127.0.0.0/8
+    option http-server-close
+    mode http
+    default_backend midonet_cluster-back
+
+backend midonet_cluster-back
+    mode http
+    balance leastconn
+    option forwardfor
+    option httpchk /
+    option httplog
+{% for host_name in [groups['midonet-cluster'] %}
+    server {{ host_name }} {{ hostvars[host_name]['ansible_ssh_host'] }}:8181 check inter 5000 inter 12000 rise 3 fall 3
+{% endfor %}

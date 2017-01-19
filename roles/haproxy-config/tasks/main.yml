@@ -7,7 +7,7 @@
     owner: "root"
     group: "root"
   with_items:
-    - midonet_cluster_api
+    - midonet_cluster
 
 - name: Regenerate HAProxy configuration
   assemble:
