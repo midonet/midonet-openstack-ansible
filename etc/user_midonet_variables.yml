@@ -2,6 +2,7 @@
 
 openstack_branch: 'stable/newton'
 midonet_service_password: labas
+midonet_service_username: midonet
 
 # Git branches for python egg building for midonet-networking and python-midonetclient
 midonet_networking_branch: 'stable/newton'
@@ -20,7 +21,7 @@ midonet_cluster_cassandra_cluster: 'midonet'
 midonet_cluster_keystone_admin_role: 'admin'
 midonet_cluster_keystone_project: 'service'
 midonet_cluster_keystone_port: 35357
-midonet_cluster_keystone_username: 'midonet'
+midonet_cluster_keystone_username: '{{ midonet_service_username }}'
 midonet_cluster_keystone_password: '{{ midonet_service_password }}'
 midonet_cluster_keystone_domain_name: 'Default'
 midonet_cluster_keystone_host: '{{ internal_lb_vip_address }}'
@@ -39,7 +40,7 @@ midonet_agent_cluster_hostname: '{{ internal_lb_vip_address }}'
 midonet_agent_tunnel_ip: '{{ ansible_br_vxlan.ipv4.address }}'
 midonet_agent_tzone_type: 'vxlan'
 midonet_agent_tzone_name: 'tz'
-midonet_agent_cluster_username: 'midonet'
+midonet_agent_cluster_username: '{{ midonet_service_username }}'
 midonet_agent_cluster_project: 'service'
 midonet_agent_cluster_password: '{{ midonet_service_password }}'
 # Don't use default 8181 Midonet port. In OSA it's allocated for repo containers

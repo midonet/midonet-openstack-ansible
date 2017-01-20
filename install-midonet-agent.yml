@@ -9,3 +9,10 @@
     - role: ansible-midonet-repo
     - role: ansible-midonet-agent
       zookeeper_hosts: '{{ groups["zookeeper"] }}'
+  tasks:
+    - name: Copy QEMU configuration
+      template:
+        src: 'qemu.conf.j2'
+        dest: '/etc/libvirt/qemu.conf'
+        owner: 'root'
+        group: 'root'

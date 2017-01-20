@@ -1,0 +1,6 @@
+---
+
+- include: install-utilities.yml
+- include: create-user.yml
+- include: install-midonet-cluster.yml
+- include: install-midonet-agent.yml
