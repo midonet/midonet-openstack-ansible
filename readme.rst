@@ -1,6 +1,6 @@
 Midonet for OpenStack-Ansible
 #########################################
-:date: 2017-01-18
+:date: 2017-01-20
 :tags: openstack, ansible
 :category: \*openstack, \*nix
 :OS: Ubuntu 16.04
@@ -72,5 +72,11 @@ Create the containers
     openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=zookeeper
     openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=midonet-cluster
     
+Download all required roles for this installation
+
+.. code-block:: bash
+
+    openstack-ansible setup-roles.yml
+
 
 WORK IN PROGRESS
