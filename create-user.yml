@@ -1,6 +1,6 @@
 ---
 
-- name: Setup Midonet service, user and user admin role
+- name: Setup Midonet service and user with admin role
   gather_facts: true
   user: root
   hosts: utility
