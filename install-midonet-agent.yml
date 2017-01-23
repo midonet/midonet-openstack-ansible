@@ -1,5 +1,10 @@
 ---
 
+- name: Facts for Zookeepers
+  gather_facts: true
+  user: root
+  hosts: zookeeper
+
 - name: Install Midonet agent on Nova nodes
   gather_facts: true
   user: root

@@ -1,5 +1,15 @@
 ---
 
+- name: Facts for Zookeepers
+  gather_facts: true
+  user: root
+  hosts: zookeeper
+
+- name: Facts for Cassandras
+  gather_facts: true
+  user: root
+  hosts: cassandra
+
 - name: Install Midonet cluster
   gather_facts: true
   user: root
