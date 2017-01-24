@@ -80,7 +80,7 @@ Install Midonet Cluster and Midolman agents
 
 Patch Neutron server instances with Midonet code
 
-..code-block:: bash
+.. code-block:: bash
 
     openstack-ansible playbook-midonet-neutron.yml
 
