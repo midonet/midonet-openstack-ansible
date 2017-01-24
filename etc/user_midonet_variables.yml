@@ -91,9 +91,6 @@ neutron_plugins:
 neutron_provider_networks:
   network_flat_networks: "flat"
   network_types: "midonet"
-  network_vlan_ranges: 
-  network_vxlan_ranges:
-  network_mappings:
 
 neutron_metering: False
 neutron_l3: False
