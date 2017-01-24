@@ -67,7 +67,6 @@ midonet_repo_mem_enabled: False
 midonet_repo_mem_username: 'midonet'
 midonet_repo_mem_password: '*******'
 
-# Enable/Disable Midonet VPNaaS by commenting out "- vpnaas" and setting horizon_enable_neutron_vpnaas True/False #
 neutron_plugin_base:
   - midonet.neutron.services.l3.l3_midonet.MidonetL3ServicePlugin
   - vpnaas
@@ -80,9 +79,9 @@ neutron_plugin_type: ml2.midonet
 
 neutron_plugins:
   ml2.midonet:
-    driver_firewall: neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
     drivers_type: "midonet,uplink"
     network_types: "midonet"
+    driver_interface: "midonet"
     mechanisms: "midonet"
     plugin_conf_ini_overrides: "{{ neutron_ml2_conf_ini_overrides }}"
     plugin_core: ml2
@@ -91,6 +90,12 @@ neutron_plugins:
 neutron_provider_networks:
   network_flat_networks: "flat"
   network_types: "midonet"
+
+neutron_neutron_conf_overrides:
+  DEFAULT:
+    dhcp_agent_notification: False
+  service_providers:
+    service_provider: VPN:Midonet:midonet.neutron.services.vpn.service_drivers.midonet_ipsec.MidonetIPsecVPNDriver:default
 
 neutron_ml2_conf_ini_overrides:
   MIDONET:
@@ -102,14 +107,9 @@ neutron_ml2_conf_ini_overrides:
 
 neutron_metering: False
 neutron_l3: False
+neutron_vpnaas: False
 neutron_lbaas: False
 neutron_lbaasv2: False
-neutron_vpnaas: False
 neutron_bgp: False
 neutron_dhcp: False
 neutron_metadata: False
-
-#neutron_plugin_loaded_base: "{% for plugin in neutron_plugin_base %}{{ plugin }}{% if not loop.last %},{% endif %}{% endfor %}"
-
-midonet_vpnaas: "{% if ('vpnaas' in neutron_plugin_base) and (neutron_plugin_type == 'midonet') %}True{% else %}False{% endif %}"
-midonet_vpnaas_service_provider: VPN:Midonet:midonet.neutron.services.vpn.service_drivers.midonet_ipsec.MidonetIPsecVPNDriver:default

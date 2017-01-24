@@ -5,13 +5,6 @@
   with_items:
     - git
 
-- name: Install MySQL-python package into Neutron virtual environment
-  shell: |
-    source {{ neutron_venv_bin }}/activate && {{ neutron_venv_bin }}/pip install MySQL-python
-  args:
-    executable: "/bin/bash"
-    chdir: "{{ neutron_venv_bin }}"
-
 - name: Midonet git checkout
   git:
     repo: https://github.com/midonet/midonet.git
@@ -30,7 +23,7 @@
     dest: /openstack/neutron-vpnaas
     version: "{{ openstack_branch }}"
   when:
-    - midonet_vpnaas | bool
+    - neutron_vpnaas | bool
 
 - name: Install neutron-vpnaas into Neutron virtual environment
   shell: |
@@ -39,7 +32,7 @@
     executable: "/bin/bash"
     chdir: /openstack/neutron-vpnaas
   when:
-    - midonet_vpnaas | bool
+    - neutron_vpnaas | bool
 
 - name: Install python-midonetclient into Neutron virtual environment
   shell: |
