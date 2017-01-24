@@ -92,6 +92,14 @@ neutron_provider_networks:
   network_flat_networks: "flat"
   network_types: "midonet"
 
+neutron_ml2_conf_ini_overrides:
+  MIDONET:
+    client: 'midonet.neutron.client.api.MidonetApiClient'
+    midonet_uri: 'http://{{ internal_lb_vip_address }}:{{ midonet_agent_cluster_port }}/midonet-api'
+    username: '{{ midonet_service_username }}'
+    password: '{{ midonet_service_password }}'
+    project_id: service
+
 neutron_metering: False
 neutron_l3: False
 neutron_lbaas: False
