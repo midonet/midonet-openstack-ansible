@@ -22,8 +22,6 @@
     repo: https://github.com/openstack/neutron-vpnaas.git
     dest: /openstack/neutron-vpnaas
     version: "{{ openstack_branch }}"
-  when:
-    - neutron_vpnaas | bool
 
 - name: Install neutron-vpnaas into Neutron virtual environment
   shell: |
@@ -31,8 +29,6 @@
   args:
     executable: "/bin/bash"
     chdir: /openstack/neutron-vpnaas
-  when:
-    - neutron_vpnaas | bool
 
 - name: Install python-midonetclient into Neutron virtual environment
   shell: |
@@ -47,4 +43,12 @@
   args:
     executable: "/bin/bash"
     chdir: /openstack/midonet-networking
+  notify: Restart Neutron server
+
+- name: Modify Neutron DB
+  command: su -s /bin/sh -c "/openstack/venvs/neutron-14.0.4/bin/neutron-db-manage --subproject networking-midonet upgrade head" neutron
+  notify: Restart Neutron server
+
+- name: Modify sub Neutron Midonet DB
+  command: su -s /bin/sh -c "/openstack/venvs/neutron-14.0.4/bin/neutron-db-manage --subproject networking-midonet upgrade head" neutron
   notify: Restart Neutron server
