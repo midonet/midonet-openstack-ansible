@@ -1,6 +1,6 @@
 Midonet for OpenStack-Ansible
 #########################################
-:date: 2017-01-24
+:date: 2017-01-25
 :tags: openstack, ansible
 :category: \*openstack, \*nix
 :OS: Ubuntu 16.04
@@ -40,18 +40,6 @@ Copy Midonet variables config into place and edit depending on environment
 
 Unset any neutron_* variable from any other config except user_midonet_variables.yml
 
-Copy the Midonet Neutron plugin template into place
-
-.. code-block:: bash
-
-    cp -r templates/plugins/midonet /etc/ansible/roles/os_neutron/templates/plugins/
-
-Overwrite neutron.conf template with modified version. See diff for changes
-
-.. code-block:: bash
-
-    cp templates/neutron.conf.j2 /etc/ansible/roles/os_neutron/templates/
-
 Add the export to update the inventory file location
 
 .. code-block:: bash
@@ -78,5 +66,27 @@ Download all required roles for this installation
 
     openstack-ansible setup-roles.yml
 
+Install Cassandra and Zookeeper clusters
+
+.. code-block:: bash
+
+    openstack-ansible setup-nsdb.yml
+
+Install Midonet Cluster and Midolman agents
+
+.. code-block:: bash
+
+    openstack-ansible setup-midonet.yml
+
+Patch Neutron server instances with Midonet code
+
+.. code-block:: bash
+
+    openstack-ansible playbook-midonet-neutron.yml
+
+
+?????
+
+Patch Neutron DB, Restart compute servers (libvirt/qemu.conf modification and libvirt locks) to apply /dev/tun acls
 
 WORK IN PROGRESS
