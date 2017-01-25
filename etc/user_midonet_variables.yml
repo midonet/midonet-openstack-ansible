@@ -37,7 +37,8 @@ midonet_cluster_heap_newsize: '100M'
 
 # For ansible-midonet-agent role
 midonet_agent_cluster_hostname: '{{ internal_lb_vip_address }}'
-midonet_agent_tunnel_ip: '{{ ansible_br_vxlan.ipv4.address }}'
+#midonet_agent_tunnel_ip: '{{ ansible_br_vxlan.ipv4.address }}'
+midonet_agent_tunnel_ip: '{{ ansible_br_mgmt.ipv4.address }}'
 midonet_agent_tzone_type: 'vxlan'
 midonet_agent_tzone_name: 'tz'
 midonet_agent_cluster_username: '{{ midonet_service_username }}'
