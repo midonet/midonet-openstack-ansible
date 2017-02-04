@@ -11,13 +11,13 @@
 
     - name: Midonet Zookeeper git checkout
       git:
-        repo: https://github.com/fitbeard/ansible-zookeeper.git
+        repo: https://github.com/midonet/ansible-zookeeper.git
         dest: roles/ansible-zookeeper
         version: "master"
 
     - name: Midonet Cassandra git checkout
       git:
-        repo: https://github.com/fitbeard/ansible-cassandra.git
+        repo: https://github.com/midonet/ansible-cassandra.git
         dest: roles/ansible-cassandra
         version: "master"
 

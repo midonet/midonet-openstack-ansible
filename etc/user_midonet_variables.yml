@@ -11,6 +11,8 @@ midonet_branch: 'stable/v5.2.1'
 # For ansible-cassandra role
 cassandra_max_heap_size: '1024M'
 cassandra_heap_newsize: '100M'
+cassandra_listen_address: '{{ ansible_host }}'
+cassandra_rpc_address: '{{ ansible_host }}'
 
 # For ansible-midonet-cluster role
 midonet_cluster_mem_enabled: False
